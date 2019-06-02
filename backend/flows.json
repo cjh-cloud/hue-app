@@ -1,0 +1,137 @@
+[
+    {
+        "id": "1f00534e.ef020d",
+        "type": "tab",
+        "label": "Colour API",
+        "disabled": false,
+        "info": "HTTP API to change the colour of the RGB LED"
+    },
+    {
+        "id": "9adade7d.4b155",
+        "type": "johnny5",
+        "z": "1f00534e.ef020d",
+        "name": "",
+        "func": "// Initialize the RGB LED\nvar led = new five.Led.RGB({\n    pins: {\n        red: 9,\n        green: 10,\n        blue: 11\n    }\n});\n\n// Turn it on and set the initial color\nled.on();\nled.color(\"#ffffff\");\n\nnode.on('input', function(msg){\n    led.color(msg.payload);\n});\n",
+        "board": "789df377.d7ef9c",
+        "noerr": 0,
+        "x": 360,
+        "y": 40,
+        "wires": [
+            [
+                "bde27abf.8c6ae8"
+            ]
+        ]
+    },
+    {
+        "id": "bde27abf.8c6ae8",
+        "type": "debug",
+        "z": "1f00534e.ef020d",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 540,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "3ad097ea.8a1158",
+        "type": "http in",
+        "z": "1f00534e.ef020d",
+        "name": "",
+        "url": "/colour",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 300,
+        "y": 200,
+        "wires": [
+            [
+                "7928fda5.6e2be4",
+                "918b95b1.862d58",
+                "5c5fe36a.9d9e7c"
+            ]
+        ]
+    },
+    {
+        "id": "918b95b1.862d58",
+        "type": "debug",
+        "z": "1f00534e.ef020d",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 490,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "7928fda5.6e2be4",
+        "type": "http response",
+        "z": "1f00534e.ef020d",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 470,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "5c5fe36a.9d9e7c",
+        "type": "function",
+        "z": "1f00534e.ef020d",
+        "name": "colour",
+        "func": "msg.payload = msg.payload.colour;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 470,
+        "y": 160,
+        "wires": [
+            [
+                "b1db7d29.a7071",
+                "9adade7d.4b155"
+            ]
+        ]
+    },
+    {
+        "id": "b1db7d29.a7071",
+        "type": "debug",
+        "z": "1f00534e.ef020d",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 630,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "789df377.d7ef9c",
+        "type": "nodebot",
+        "z": "",
+        "name": "",
+        "username": "",
+        "password": "",
+        "boardType": "firmata",
+        "serialportName": "/dev/ttyACM0",
+        "connectionType": "local",
+        "mqttServer": "",
+        "pubTopic": "",
+        "subTopic": "",
+        "tcpHost": "",
+        "tcpPort": "",
+        "sparkId": "",
+        "sparkToken": "",
+        "beanId": "",
+        "impId": "",
+        "uuid": "",
+        "token": "",
+        "sendUuid": ""
+    }
+]
