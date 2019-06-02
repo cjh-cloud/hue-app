@@ -3,17 +3,13 @@ version: '3'
 services:
 
   backend:
-    build: ./backend
-    environment:
-      FLOWS: /data/flows.json
-      NODE_PATH: /usr/src/node-red/node_modules:/data/node_modules
-    #restart: on-failure:5
+    image: chewett/hue-backend
     ports:
       - "1880:1880"
     devices:
       - "/dev/ttyACM0:/dev/ttyACM0"
     
   frontend:
-    build: ./frontend
+    image: chewett/hue-frontend
     ports:
       - "80:80"
