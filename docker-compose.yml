@@ -3,13 +3,13 @@ version: '3'
 services:
 
   backend:
-    image: chewett/hue-backend
+    build: ./backend
     ports:
       - "1880:1880"
     devices:
       - "/dev/ttyACM0:/dev/ttyACM0"
     
   frontend:
-    image: chewett/hue-frontend
+    build: ./frontend
     ports:
-      - "80:80"
+      - "8090:80"

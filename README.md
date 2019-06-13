@@ -17,10 +17,11 @@ https://hub.docker.com/r/chewett/hue-frontend
 
 docker run --name hue-frontend -p "80:80" chewett/hue-frontend
 
+Using Docker-Compose:
+1. change the IP address in App.js to match that of the Pi the backend is running on
+2. follow the npm commands for the frontend to get the build folder so the apache container can be built
+3. docker-compose up
+
 Links I found useful:
 https://github.com/rwaldron/johnny-five/wiki/Getting-started-with-Raspberry-Pi-node-red-and-IoT
 https://timchooblog.wordpress.com/2016/06/14/configuring-the-johnny-five-robotics-library-to-work-in-node-red/
-
-Notes:
-Could not get docker-compose to install on the Raspberry Pi.
-May attempt to try docker swarm later, but for now, the two "docker run" commands above work.
