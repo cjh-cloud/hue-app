@@ -44,7 +44,7 @@ function App() {
 
 function sendColour(colour) {
 	console.log("Changing colour...");
-	fetch('http://192.168.1.100:1880/colour', {
+	fetch('http://' + document.location.hostname + ':1880/colour', {
 	  method: 'POST',
 	  headers: {
 		'Accept': 'application/json',
